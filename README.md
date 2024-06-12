@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Civil Registry Blockchain with AES
 
-## Getting Started
+## Overview Proyek
+Proyek ini adalah sistem registrasi sipil menggunakan teknologi blockchain yang aman dari manipulasi dan enkripsi AES sebagai perlindungan data. Sistem ini menyimpan data pribadi seperti akta kelahiran dan akta nikah. Pengguna dapat memasukkan dan memeriksa akta kelahiran dan akta nikah dengan aman pada jaringan blockchain.
 
-First, run the development server:
+## Kreator Proyek
+18221072 - Hilmi Baskara Radanto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Fitur
+- Pengguna dapat melakukan input data akta kelahiran dan akta perkawinan
+- Pengguna dapat melihat data yang sudah diinput berdasarkan NIK
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies yang Digunakan
+- **Frontend:** Next.js, Tailwind CSS
+- **Blockchain:** Ethereum, Truffle
+- **Smart Contracts:** Solidity
+- **Cryptography Algorithm:** AES (Advanced Encryption Standard)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
+### Website Deployment
+https://civilregistry-blockchain.vercel.app/
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Blockchain Deployment
+https://sepolia.etherscan.io/address/0x989B1A6A4Fadb97cb83300F7Aa891a1Ab755d457
 
-## Learn More
+## Cara Menggunakan
+1. **Buat Wallet Crypto** 
+2. **Gunakan Jaringan Sepolia Testnet**
+3. **Masukkan Sertifikat:** Buka halaman input dan isi informasi yang diperlukan untuk akta kelahiran atau akta nikah.
+4. **Periksa Sertifikat:** Gunakan fungsi pencarian untuk memverifikasi keaslian sertifikat.
 
-To learn more about Next.js, take a look at the following resources:
+## Cara Menjalankan Secara Lokal
+Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone repository:**
+    ```sh
+    git clone <url-repositori>
+    cd civilregistry-blockchain-master
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Install dependencies:**
+    ```sh
+    npm install
+    ```
 
-## Deploy on Vercel
+3. **Compile smart contracts:**
+    ```sh
+    truffle compile
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Deploy smart contracts:**
+    ```sh
+    truffle migrate --network <nama-jaringan>
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Jalankan development server:**
+    ```sh
+    npm run dev
+    ```
+
+6. **Akses website:**
+    - Buka browser Anda dan navigasi ke `http://localhost:3000`
+
+## Makalah
+Makalah dapat diakses pada link 
