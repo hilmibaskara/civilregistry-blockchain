@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { encrypt, decrypt } from '@/app/utils/AES';
 
-const BirthCertificateForm: React.FC = () => {
+interface Props {
+  onSubmit: (data: any) => void;
+}
+
+const BirthCertificateForm: React.FC<Props> = ({ onSubmit }) => {
   const [birthData, setBirthData] = useState({
     nik: '',
     birthRegistrationNumber: '',
@@ -11,7 +14,6 @@ const BirthCertificateForm: React.FC = () => {
     gender: '',
     fatherName: '',
     motherName: '',
-    address: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,28 +22,12 @@ const BirthCertificateForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const encrypted_birthData = encrypt(JSON.stringify(birthData));
-    const decrypted_birthData = decrypt(encrypted_birthData);
-    console.log(encrypted_birthData);
-    console.log(decrypted_birthData);
-  };
-
-  const setDefaultValues = () => {
-    setBirthData({
-      nik: '1234567890123456',
-      birthRegistrationNumber: 'BRN1234567890',
-      fullName: 'John Doe',
-      birthPlace: 'Jakarta',
-      birthDate: '1990-01-01',
-      gender: 'Male',
-      fatherName: 'Father Name',
-      motherName: 'Mother Name',
-      address: '123 Main St, Jakarta',
-    });
+    onSubmit(birthData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-lg">
+      <h2 className="text-2xl font-bold mb-4">Input Akta Kelahiran</h2>
       {Object.keys(birthData).map((key) => (
         <div key={key} className="mb-4">
           <label htmlFor={key} className="block text-sm font-medium text-gray-700">
@@ -57,11 +43,8 @@ const BirthCertificateForm: React.FC = () => {
           />
         </div>
       ))}
-      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded mr-2">
+      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
         Submit
-      </button>
-      <button type="button" onClick={setDefaultValues} className="bg-gray-500 text-white py-2 px-4 rounded">
-        Set Default Values
       </button>
     </form>
   );

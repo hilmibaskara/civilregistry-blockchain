@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const MarriageCertificateForm: React.FC = () => {
+interface Props {
+  onSubmit: (data: any) => void;
+}
+
+const MarriageCertificateForm: React.FC<Props> = ({ onSubmit }) => {
   const [marriageData, setMarriageData] = useState({
     nik: '',
     marriageRegistrationNumber: '',
@@ -16,23 +20,12 @@ const MarriageCertificateForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simpan data atau kirim ke backend
-    console.log(marriageData);
-  };
-
-  const setDefaultValues = () => {
-    setMarriageData({
-      nik: '1234567890123456',
-      marriageRegistrationNumber: 'MRN1234567890',
-      fullName: 'John Doe',
-      birthPlace: 'Jakarta',
-      birthDate: '1990-01-01',
-      spouseName: 'Jane Doe',
-    });
+    onSubmit(marriageData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-lg">
+      <h2 className="text-2xl font-bold mb-4">Input Akta Perkawinan</h2>
       {Object.keys(marriageData).map((key) => (
         <div key={key} className="mb-4">
           <label htmlFor={key} className="block text-sm font-medium text-gray-700">
@@ -48,11 +41,8 @@ const MarriageCertificateForm: React.FC = () => {
           />
         </div>
       ))}
-      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded mr-2">
+      <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
         Submit
-      </button>
-      <button type="button" onClick={setDefaultValues} className="bg-gray-500 text-white py-2 px-4 rounded">
-        Set Default Values
       </button>
     </form>
   );
