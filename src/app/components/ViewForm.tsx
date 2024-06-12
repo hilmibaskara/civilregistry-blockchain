@@ -46,24 +46,24 @@ const ViewForm: React.FC = () => {
   const fetchBirthCertificate = async () => {
     if (contract) {
       const data = await contract.methods.getBirthCertificate(nik).call();
-      // const decryptedData = {
-      //   birthRegistrationNumber: decrypt(data.birthRegistrationNumber),
-      //   fullName: decrypt(data.fullName),
-      //   birthPlace: decrypt(data.birthPlace),
-      //   birthDate: decrypt(data.birthDate),
-      //   gender: decrypt(data.gender),
-      //   fatherName: decrypt(data.fatherName),
-      //   motherName: decrypt(data.motherName),
-      // };
       const decryptedData = {
-        birthRegistrationNumber: data.birthRegistrationNumber,
-        fullName: data.fullName,
-        birthPlace: data.birthPlace,
-        birthDate: data.birthDate,
-        gender: data.gender,
-        fatherName: data.fatherName,
-        motherName: data.motherName,
+        birthRegistrationNumber: decrypt(data.birthRegistrationNumber),
+        fullName: decrypt(data.fullName),
+        birthPlace: decrypt(data.birthPlace),
+        birthDate: decrypt(data.birthDate),
+        gender: decrypt(data.gender),
+        fatherName: decrypt(data.fatherName),
+        motherName: decrypt(data.motherName),
       };
+      // const decryptedData = {
+      //   birthRegistrationNumber: data.birthRegistrationNumber,
+      //   fullName: data.fullName,
+      //   birthPlace: data.birthPlace,
+      //   birthDate: data.birthDate,
+      //   gender: data.gender,
+      //   fatherName: data.fatherName,
+      //   motherName: data.motherName,
+      // };
       setBirthData(decryptedData);
     }
   };
