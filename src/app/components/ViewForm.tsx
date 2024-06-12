@@ -72,7 +72,6 @@ const ViewForm: React.FC = () => {
     if (contract) {
       const data = await contract.methods.getMarriageCertificate(nik).call();
       const decryptedData = {
-        ...data,
         marriageRegistrationNumber: decrypt(data.marriageRegistrationNumber),
         fullName: decrypt(data.fullName),
         birthPlace: decrypt(data.birthPlace),
