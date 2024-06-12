@@ -34,7 +34,7 @@ Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
 1. **Clone repository:**
     ```sh
-    git clone <url-repositori>
+    git clone https://github.com/hilmibaskara/civilregistry-blockchain
     cd civilregistry-blockchain-master
     ```
 
@@ -50,7 +50,7 @@ Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
 4. **Deploy smart contracts:**
     ```sh
-    truffle migrate --network <nama-jaringan>
+    truffle migrate --network sepolia
     ```
 
 5. **Jalankan development server:**
