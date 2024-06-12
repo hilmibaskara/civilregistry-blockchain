@@ -1,0 +1,278 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_nik",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_birthRegistrationNumber",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_fullName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_birthPlace",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_birthDate",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_gender",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_fatherName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_motherName",
+                "type": "string"
+            }
+        ],
+        "name": "addBirthCertificate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_nik",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_marriageRegistrationNumber",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_fullName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_birthPlace",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_birthDate",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_spouseName",
+                "type": "string"
+            }
+        ],
+        "name": "addMarriageCertificate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "name": "birthCertificates",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "birthRegistrationNumber",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "fullName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "birthPlace",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "birthDate",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "gender",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "fatherName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "motherName",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_nik",
+                "type": "string"
+            }
+        ],
+        "name": "getBirthCertificate",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "birthRegistrationNumber",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "fullName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "birthPlace",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "birthDate",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "gender",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "fatherName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "motherName",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct CivilRegistry.BirthCertificate",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_nik",
+                "type": "string"
+            }
+        ],
+        "name": "getMarriageCertificate",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "marriageRegistrationNumber",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "fullName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "birthPlace",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "birthDate",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "spouseName",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct CivilRegistry.MarriageCertificate",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "name": "marriageCertificates",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "marriageRegistrationNumber",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "fullName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "birthPlace",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "birthDate",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "spouseName",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
-import CivilRegistry from '../../../build/contracts/CivilRegistry.json';
 import { decrypt } from '../utils/AES';
+import CONTRACT_ABI from '../utils/ContractABI.json';
 
 declare global {
   interface Window {
@@ -10,6 +10,8 @@ declare global {
   }
 }
 
+// Contract address
+const CONTRACT_ADDRESS = '0x989B1A6A4Fadb97cb83300F7Aa891a1Ab755d457';
 
 const ViewForm: React.FC = () => {
   const [nik, setNik] = useState('');
@@ -27,54 +29,59 @@ const ViewForm: React.FC = () => {
         window.web3 = new Web3(window.web3.currentProvider);
       } else {
         window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        return;
       }
 
       const web3 = window.web3;
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
 
-      const networkId = await web3.eth.net.getId();
-      const networkData = CivilRegistry.networks[networkId];
-      if (networkData) {
-        const abi = CivilRegistry.abi;
-        const address = networkData.address;
-        const contract = new web3.eth.Contract(abi, address);
-        setContract(contract);
-      } else {
-        window.alert('Smart contract not deployed to detected network.');
-      }
+      const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+      setContract(contract);
     };
 
     loadBlockchainData();
   }, []);
 
   const fetchBirthCertificate = async () => {
-    const data = await contract.methods.getBirthCertificate(nik).call();
-    const decryptedData = {
-      birthRegistrationNumber: decrypt(data.birthRegistrationNumber),
-      fullName: decrypt(data.fullName),
-      birthPlace: decrypt(data.birthPlace),
-      birthDate: decrypt(data.birthDate),
-      gender: decrypt(data.gender),
-      fatherName: decrypt(data.fatherName),
-      motherName: decrypt(data.motherName),
-    };
-    setBirthData(decryptedData);
+    if (contract) {
+      const data = await contract.methods.getBirthCertificate(nik).call();
+      // const decryptedData = {
+      //   birthRegistrationNumber: decrypt(data.birthRegistrationNumber),
+      //   fullName: decrypt(data.fullName),
+      //   birthPlace: decrypt(data.birthPlace),
+      //   birthDate: decrypt(data.birthDate),
+      //   gender: decrypt(data.gender),
+      //   fatherName: decrypt(data.fatherName),
+      //   motherName: decrypt(data.motherName),
+      // };
+      const decryptedData = {
+        birthRegistrationNumber: data.birthRegistrationNumber,
+        fullName: data.fullName,
+        birthPlace: data.birthPlace,
+        birthDate: data.birthDate,
+        gender: data.gender,
+        fatherName: data.fatherName,
+        motherName: data.motherName,
+      };
+      setBirthData(decryptedData);
+    }
   };
 
   const fetchMarriageCertificate = async () => {
-    const data = await contract.methods.getMarriageCertificate(nik).call();
-    const decryptedData = {
-      ...data,
-      marriageRegistrationNumber: decrypt(data.marriageRegistrationNumber),
-      fullName: decrypt(data.fullName),
-      birthPlace: decrypt(data.birthPlace),
-      birthDate: decrypt(data.birthDate),
-      spouseName: decrypt(data.spouseName)
-    };
-    setMarriageData(decryptedData);
+    if (contract) {
+      const data = await contract.methods.getMarriageCertificate(nik).call();
+      const decryptedData = {
+        ...data,
+        marriageRegistrationNumber: decrypt(data.marriageRegistrationNumber),
+        fullName: decrypt(data.fullName),
+        birthPlace: decrypt(data.birthPlace),
+        birthDate: decrypt(data.birthDate),
+        spouseName: decrypt(data.spouseName),
+      };
+      setMarriageData(decryptedData);
+    }
   };
-
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6 text-black">

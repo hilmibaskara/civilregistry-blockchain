@@ -41,6 +41,8 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const privateKey1 = ["0x4fd1915455b1943466a7ac9f6463be3fb4f139b9bcf27f6778f494430ee9eae1"]
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
@@ -69,6 +71,13 @@ module.exports = {
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
+    sepolia: {
+      provider: () => new HDWalletProvider(privateKey1, "wss://ethereum-sepolia-rpc.publicnode.com"),
+      networkCheckTimeout: 100000,
+      timeoutBlocks: 200,
+      network_id: 11155111,
+      skipDryRun: 1
+    }
     //
     // An additional network, but with some advanced options…
     // advanced: {
