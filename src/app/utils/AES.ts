@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js';
 
-const SECRET_KEY = 'kunci-rahasia'; // Gantilah dengan kunci rahasia Anda
+const SECRET_KEY = 'kunci-rahasia';
 
 // Fungsi untuk mengenkripsi teks
 export const encrypt = (text: string): string => {
